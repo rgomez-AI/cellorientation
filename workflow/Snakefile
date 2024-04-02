@@ -1,0 +1,117 @@
+# Workflow CellOrientation: For Measuring the orientation of centrosome respect to the nucleus of cells (in angles) 
+#			    coming from scratch assay and performs Kuiper's one-sample test of uniformity on the circle.
+#
+#
+# Enviroment activation
+# >> conda activate snakemake
+#
+# Create required environments for workflow execution
+# >> snakemake --core all --use-conda --conda-create-envs-only Data_Analysis
+#
+# Visualizing the DAG of jobs
+# >> snakemake --dag Data_Analysis | dot -Tpdf > dag.pdf
+#
+# Execution of a workflow with snakemake
+# >> snakemake --cores all --use-conda Data_Analysis
+#
+# In case of partial execution is possible to rerun the workflow
+# >> snakemake --cores all --use-conda --rerun-incomplete Data_Analysis
+#
+# Report generation
+# >> pip install pygments
+# >> snakemake Data_Analysis --report report.html
+#
+#
+# Author: Raul gomez-Riera
+# contact: raul.gomez@crg.es
+
+
+
+
+from snakemake.utils import min_version
+from tkinter.filedialog import askdirectory
+import platform
+import os
+import sys
+
+min_version("7.24.0")
+
+bold = "\033[1m"
+green = "\033[92m"
+cyan = "\033[36m"
+end = "\033[0m"
+
+
+msg = f"""{green}{bold}Thanks for using 3DChromTrans and please remember to cite the tool!{end}{end}
+    {cyan} Author: Raul Gomez-Riera.
+           Title:
+           journal: {end}
+
+"""
+
+sys.stderr.write(msg)
+
+
+report: "report/workflow.rst"
+
+
+OS = platform.system()
+
+currentDirectory = os.getcwd()
+
+dirpath = askdirectory(initialdir=currentDirectory, title="Select Images Directory")
+
+sep = os.path.sep
+
+localrules:
+    lif2tif_split,
+    cellprofiler,
+    R
+    
+    
+rule all:
+    input:
+        "report.html"
+
+
+rule split_channels:
+    input:
+        "scripts" + sep + "lif2tif_split_proj_headless.ijm",
+        dirpath,
+    params:
+        split="1",	# Split Color (Boolean)
+	proj="ZSTD",	# Stack projection ("ZMAX", "ZAVG", "ZSTD" or "None")
+	flip="0",	# Flip Vertical (Boolean)
+    output:
+        directory("CP_DATASET"),
+    conda:
+        "envs" + sep + "fiji.yaml"
+    shell:
+        "mkdir CP_DATASET ; ImageJ --update update ; ImageJ -macro {input[0]} {input[1]},{output},{params.split},{params.proj},{params.flip}"
+    
+
+rule cellprofiler:
+    input:
+        "scripts" + sep + "Orientation.cppipe",
+        "CP_DATASET",
+    output:
+        directory("CP_OUT"),
+    conda:
+        "envs" + sep + "cellprofiler.yaml"
+    shell:
+        "mkdir CP_OUT ; cellprofiler -c -r -p {input[0]} -o {output} -i {input[1]}"
+
+
+rule Data_Analysis:
+    input:
+        "scripts" + sep + "DataAnalysis_headless.R",
+        rules.cellprofiler.output,
+    output:
+        report(directory("../results"), patterns=["{name}.pdf"]),
+    conda:
+        "envs" + sep + "R.yaml"
+    shell:
+        "mkdir -p ../results ; Rscript {input[0]} {input[1]},{output} ; cp {input[1]}/*.csv ../results/"
+
+
+

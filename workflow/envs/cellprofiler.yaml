@@ -1,0 +1,9 @@
+name: cellprofiler
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.8.15
+  - pip:
+      - cellprofiler==4.2.6
+      - cellprofiler-core==4.2.6
