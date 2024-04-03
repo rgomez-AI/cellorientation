@@ -223,7 +223,7 @@ EnhanceOrSuppressFeatures:[module_num:13|svn_version:'Unknown'|variable_revision
 
 ImageMath:[module_num:14|svn_version:'Unknown'|variable_revision_number:5|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Operation:Log transform (base 2)
-    Raise the power of the result by:0.85
+    Raise the power of the result by:0.95
     Multiply the result by:1.0
     Add to result:0.0
     Set values less than 0 equal to 0?:Yes
@@ -245,7 +245,7 @@ FindMaxima:[module_num:15|svn_version:'Unknown'|variable_revision_number:1|show_
     Name the output image:CEp_max
     Minimum distance between maxima:10
     Method for excluding background:Threshold
-    Specify the minimum intensity of a peak:0.01
+    Specify the minimum intensity of a peak:0.015
     Select the image to use as a mask:None
     Select the objects to search within:GolgiExpanded
 
