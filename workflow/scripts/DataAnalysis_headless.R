@@ -151,7 +151,7 @@ title('Orientation of cells located at the inner region')
 
 # % of Cells with the orientation between 180 and 360 degrees
 theta <- (360 + Cell_IN$Angle) %% 360
-ratio <- sum(theta>180)/length(Cell_IN$Angle)
+ratio <- sum(theta>180 & theta<360)/length(Cell_IN$Angle)
 
 # Kuiper Test of Uniformity
 k <- kuiper.test(crc, alpha = 0.05)
@@ -172,7 +172,7 @@ text(x = -2.4, y = 0.6,
      cex = 0.7, 
      adj= 0)
 text(x = -2.4, y = 0.4, 
-     labels = sprintf("Cells oriented (>180\u00B0): %s ", percent(ratio,1)),
+     labels = sprintf("Cells oriented [180\u00B0 - 360\u00B0]: %s ", percent(ratio,1)),
      col = "red",
      cex = 0.7, 
      adj = 0)
@@ -193,7 +193,7 @@ title('Orientation of cells located at the edge')
 
 # % of Cells with the orientation between 180 and 360 degrees
 theta <- (360 + Cell_OUT$Angle) %% 360
-ratio <- sum(theta>180)/length(Cell_OUT$Angle)
+ratio <- sum(theta>180 & theta<360)/length(Cell_OUT$Angle)
 
 # Kuiper Test of Uniformity
 k <- kuiper.test(crc, alpha = 0.05)
@@ -214,7 +214,7 @@ text(x = -2.4, y = 0.6,
      cex = 0.7, 
      adj= 0)
 text(x = -2.4, y = 0.4, 
-     labels = sprintf("Cells oriented (>180\u00B0): %s ", percent(ratio,1)),
+     labels = sprintf("Cells oriented [180\u00B0 - 360\u00B0]: %s ", percent(ratio,1)),
      col = "red",
      cex = 0.7, 
      adj = 0)

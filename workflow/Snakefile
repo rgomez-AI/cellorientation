@@ -64,9 +64,9 @@ dirpath = askdirectory(initialdir=currentDirectory, title="Select Images Directo
 sep = os.path.sep
 
 localrules:
-    lif2tif_split,
+    split_channels,
     cellprofiler,
-    R
+    Data_Analysis
     
     
 rule all:
