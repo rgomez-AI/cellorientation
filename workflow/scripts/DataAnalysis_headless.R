@@ -189,7 +189,7 @@ pdf(out, width = 9, height = 5)
 crc = circular(Cell_OUT$Angle, type="angles", units = "degrees")
 plot.circular(crc)
 rose.diag(crc, bins=24, col="yellow",  prop=2.5, add=TRUE)
-title('Orientation of cells located at the edge')
+title('Orientation of cells located at the leading edge')
 
 # % of Cells with the orientation between 180 and 360 degrees
 theta <- (360 + Cell_OUT$Angle) %% 360
