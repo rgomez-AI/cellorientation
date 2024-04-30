@@ -2,7 +2,7 @@ CellProfiler Pipeline: http://www.cellprofiler.org
 Version:5
 DateRevision:426
 GitHash:
-ModuleCount:32
+ModuleCount:35
 HasImagePlaneDetails:False
 
 Images:[module_num:1|svn_version:'Unknown'|variable_revision_number:2|show_window:False|notes:['To begin creating your project, use the Images module to compile a list of files and/or folders that you want to analyze. You can also specify a set of rules to include only the desired files in your selected folders.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
@@ -66,7 +66,7 @@ Groups:[module_num:4|svn_version:'Unknown'|variable_revision_number:2|show_windo
     Metadata category:FileName
     Metadata category:ChannelNumber
 
-RescaleIntensity:[module_num:5|svn_version:'Unknown'|variable_revision_number:3|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+RescaleIntensity:[module_num:5|svn_version:'Unknown'|variable_revision_number:3|show_window:False|notes:['Rescale for Nuclei better detection']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:DAPI
     Name the output image:DAPI_RescaleIntensity
     Rescaling method:Stretch each image to use the full intensity range
@@ -80,7 +80,7 @@ RescaleIntensity:[module_num:5|svn_version:'Unknown'|variable_revision_number:3|
     Divisor value:1.0
     Divisor measurement:None
 
-IdentifyPrimaryObjects:[module_num:6|svn_version:'Unknown'|variable_revision_number:15|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+IdentifyPrimaryObjects:[module_num:6|svn_version:'Unknown'|variable_revision_number:15|show_window:False|notes:['Nuclei detection']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:DAPI_RescaleIntensity
     Name the primary objects to be identified:Nuclei
     Typical diameter of objects, in pixel units (Min,Max):30,110
@@ -116,7 +116,7 @@ IdentifyPrimaryObjects:[module_num:6|svn_version:'Unknown'|variable_revision_num
     # of deviations:2.0
     Thresholding method:Minimum Cross-Entropy
 
-RescaleIntensity:[module_num:7|svn_version:'Unknown'|variable_revision_number:3|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+RescaleIntensity:[module_num:7|svn_version:'Unknown'|variable_revision_number:3|show_window:False|notes:['Rescale for Golgi better detection']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:Golgi
     Name the output image:Golgi_RescaleIntensity
     Rescaling method:Stretch each image to use the full intensity range
@@ -130,29 +130,29 @@ RescaleIntensity:[module_num:7|svn_version:'Unknown'|variable_revision_number:3|
     Divisor value:1.0
     Divisor measurement:None
 
-EnhanceOrSuppressFeatures:[module_num:8|svn_version:'Unknown'|variable_revision_number:7|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+EnhanceOrSuppressFeatures:[module_num:8|svn_version:'Unknown'|variable_revision_number:7|show_window:False|notes:['Enhance Golgi image ']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:Golgi_RescaleIntensity
     Name the output image:Golgi_Enhance
     Select the operation:Enhance
     Feature size:5
     Feature type:Texture
     Range of hole sizes:1,10
-    Smoothing scale:2.0
+    Smoothing scale:2
     Shear angle:0.0
     Decay:0.95
     Enhancement method:Tubeness
     Speed and accuracy:Slow
     Rescale result image:No
 
-GaussianFilter:[module_num:9|svn_version:'Unknown'|variable_revision_number:1|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+GaussianFilter:[module_num:9|svn_version:'Unknown'|variable_revision_number:1|show_window:False|notes:['Blur the Golgi image to join scatter pixel that are related']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:Golgi_Enhance
     Name the output image:Golgi_GaussianFilter
     Sigma:4
 
-IdentifyPrimaryObjects:[module_num:10|svn_version:'Unknown'|variable_revision_number:15|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+IdentifyPrimaryObjects:[module_num:10|svn_version:'Unknown'|variable_revision_number:15|show_window:False|notes:['Golgi detection']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:Golgi_GaussianFilter
     Name the primary objects to be identified:Golgi
-    Typical diameter of objects, in pixel units (Min,Max):10,60
+    Typical diameter of objects, in pixel units (Min,Max):15,60
     Discard objects outside the diameter range?:Yes
     Discard objects touching the border of the image?:No
     Method to distinguish clumped objects:Shape
@@ -185,7 +185,7 @@ IdentifyPrimaryObjects:[module_num:10|svn_version:'Unknown'|variable_revision_nu
     # of deviations:2.0
     Thresholding method:Otsu
 
-ExpandOrShrinkObjects:[module_num:11|svn_version:'Unknown'|variable_revision_number:2|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:True]
+ExpandOrShrinkObjects:[module_num:11|svn_version:'Unknown'|variable_revision_number:2|show_window:False|notes:['Expand 1px for connect disconnected Golgi object']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input objects:Golgi
     Name the output objects:GolgiExpanded
     Select the operation:Expand objects by a specified number of pixels
@@ -193,7 +193,7 @@ ExpandOrShrinkObjects:[module_num:11|svn_version:'Unknown'|variable_revision_num
     Fill holes in objects so that all objects shrink to a single point?:No
     Expand or shrink measurement:None
 
-RescaleIntensity:[module_num:12|svn_version:'Unknown'|variable_revision_number:3|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+RescaleIntensity:[module_num:12|svn_version:'Unknown'|variable_revision_number:3|show_window:False|notes:['Rescale for centrosome marker CEp better detection']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:CEp
     Name the output image:CEp_RescaleIntensity
     Rescaling method:Stretch each image to use the full intensity range
@@ -207,7 +207,7 @@ RescaleIntensity:[module_num:12|svn_version:'Unknown'|variable_revision_number:3
     Divisor value:1.0
     Divisor measurement:None
 
-EnhanceOrSuppressFeatures:[module_num:13|svn_version:'Unknown'|variable_revision_number:7|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+EnhanceOrSuppressFeatures:[module_num:13|svn_version:'Unknown'|variable_revision_number:7|show_window:False|notes:['Enhance circular shape of the centrosome']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:CEp_RescaleIntensity
     Name the output image:CEp_Enhance
     Select the operation:Enhance
@@ -221,51 +221,97 @@ EnhanceOrSuppressFeatures:[module_num:13|svn_version:'Unknown'|variable_revision
     Speed and accuracy:Slow
     Rescale result image:No
 
-ImageMath:[module_num:14|svn_version:'Unknown'|variable_revision_number:5|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
-    Operation:Log transform (base 2)
-    Raise the power of the result by:0.95
-    Multiply the result by:1.0
-    Add to result:0.0
-    Set values less than 0 equal to 0?:Yes
-    Set values greater than 1 equal to 1?:Yes
-    Replace invalid values with 0?:Yes
-    Ignore the image masks?:No
-    Name the output image:CEp_Enhance_Math
-    Image or measurement?:Image
-    Select the first image:CEp_Enhance
-    Multiply the first image by:1.0
-    Measurement:
-    Image or measurement?:Image
-    Select the second image:None
-    Multiply the second image by:1.0
-    Measurement:
+EnhanceOrSuppressFeatures:[module_num:14|svn_version:'Unknown'|variable_revision_number:7|show_window:False|notes:['Attenuate shapes that are not circular and are not related to the centrosome']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:CEp_Enhance
+    Name the output image:CEp_Enhance_spec
+    Select the operation:Enhance
+    Feature size:10
+    Feature type:Speckles
+    Range of hole sizes:1,10
+    Smoothing scale:2.0
+    Shear angle:0.0
+    Decay:0.95
+    Enhancement method:Tubeness
+    Speed and accuracy:Slow
+    Rescale result image:No
 
-FindMaxima:[module_num:15|svn_version:'Unknown'|variable_revision_number:1|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
-    Select the input image:CEp_Enhance_Math
-    Name the output image:CEp_max
-    Minimum distance between maxima:10
-    Method for excluding background:Threshold
-    Specify the minimum intensity of a peak:0.015
-    Select the image to use as a mask:None
-    Select the objects to search within:GolgiExpanded
+RescaleIntensity:[module_num:15|svn_version:'Unknown'|variable_revision_number:3|show_window:False|notes:['Rescale intensity of enhanced feature from the centrosome for better detection']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:CEp_Enhance_spec
+    Name the output image:CEp_EnhanceRescale
+    Rescaling method:Stretch each image to use the full intensity range
+    Method to calculate the minimum intensity:Custom
+    Method to calculate the maximum intensity:Custom
+    Lower intensity limit for the input image:0.0
+    Upper intensity limit for the input image:1.0
+    Intensity range for the input image:0.0,1.0
+    Intensity range for the output image:0.0,1.0
+    Select image to match in maximum intensity:None
+    Divisor value:1.0
+    Divisor measurement:None
 
-ConvertImageToObjects:[module_num:16|svn_version:'Unknown'|variable_revision_number:1|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:True]
-    Select the input image:CEp_max
-    Name the output object:CEp_max_obj
-    Convert to boolean image:Yes
-    Preserve original labels:No
-    Background label:0
-    Connectivity:0
+IdentifyPrimaryObjects:[module_num:16|svn_version:'Unknown'|variable_revision_number:15|show_window:False|notes:['Centrosome detection']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:CEp_EnhanceRescale
+    Name the primary objects to be identified:CEp_all
+    Typical diameter of objects, in pixel units (Min,Max):4,16
+    Discard objects outside the diameter range?:Yes
+    Discard objects touching the border of the image?:Yes
+    Method to distinguish clumped objects:Shape
+    Method to draw dividing lines between clumped objects:Shape
+    Size of smoothing filter:10
+    Suppress local maxima that are closer than this minimum allowed distance:10
+    Speed up by using lower-resolution image to find local maxima?:Yes
+    Fill holes in identified objects?:After both thresholding and declumping
+    Automatically calculate size of smoothing filter for declumping?:Yes
+    Automatically calculate minimum allowed distance between local maxima?:No
+    Handling of objects if excessive number of objects identified:Continue
+    Maximum number of objects:500
+    Use advanced settings?:Yes
+    Threshold setting version:12
+    Threshold strategy:Global
+    Thresholding method:Robust Background
+    Threshold smoothing scale:0
+    Threshold correction factor:1
+    Lower and upper bounds on threshold:0.0,1.0
+    Manual threshold:0.0
+    Select the measurement to threshold with:None
+    Two-class or three-class thresholding?:Three classes
+    Log transform before thresholding?:No
+    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
+    Size of adaptive window:20
+    Lower outlier fraction:0.05
+    Upper outlier fraction:0.05
+    Averaging method:Mean
+    Variance method:Standard deviation
+    # of deviations:30
+    Thresholding method:Otsu
 
-ExpandOrShrinkObjects:[module_num:17|svn_version:'Unknown'|variable_revision_number:2|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
-    Select the input objects:CEp_max_obj
+MeasureObjectSizeShape:[module_num:17|svn_version:'Unknown'|variable_revision_number:3|show_window:False|notes:['Measure the Zernike polynomia for further filter detected centrosome']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+    Select object sets to measure:CEp_all
+    Calculate the Zernike features?:Yes
+    Calculate the advanced features?:No
+
+FilterObjects:[module_num:18|svn_version:'Unknown'|variable_revision_number:10|show_window:False|notes:["Use first order polynomial to filter objects that doesn't have circular shape"]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:True]
+    Select the objects to filter:CEp_all
     Name the output objects:Centrosome
-    Select the operation:Expand objects by a specified number of pixels
-    Number of pixels by which to expand or shrink:8
-    Fill holes in objects so that all objects shrink to a single point?:No
-    Expand or shrink measurement:None
+    Select the filtering mode:Measurements
+    Select the filtering method:Limits
+    Select the objects that contain the filtered objects:None
+    Select the location of the rules or classifier file:Elsewhere...|
+    Rules or classifier file name:rules.txt
+    Class number:1
+    Measurement count:1
+    Additional object count:0
+    Assign overlapping child to:Both parents
+    Keep removed objects as a separate set?:No
+    Name the objects removed by the filter:RemovedObjects
+    Select the measurement to filter by:AreaShape_Zernike_0_0
+    Filter using a minimum measurement value?:Yes
+    Minimum value:0.75
+    Filter using a maximum measurement value?:No
+    Maximum value:0.71
+    Allow fuzzy feature matching?:No
 
-RelateObjects:[module_num:18|svn_version:'Unknown'|variable_revision_number:5|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+RelateObjects:[module_num:19|svn_version:'Unknown'|variable_revision_number:5|show_window:False|notes:['To avoid false positive centrosome detection we establish its co-localization with golgi.', 'Since golgi and centrosome co-localizing']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Parent objects:GolgiExpanded
     Child objects:Centrosome
     Calculate child-parent distances?:None
@@ -275,12 +321,31 @@ RelateObjects:[module_num:18|svn_version:'Unknown'|variable_revision_number:5|sh
     Name the output object:TrueCentrosome
     Parent name:None
 
-IdentifySecondaryObjects:[module_num:19|svn_version:'Unknown'|variable_revision_number:10|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:True]
+ImageMath:[module_num:20|svn_version:'Unknown'|variable_revision_number:5|show_window:False|notes:['Create new image for cell detection combining golgi and centrosome image']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+    Operation:Add
+    Raise the power of the result by:1
+    Multiply the result by:1
+    Add to result:0.0
+    Set values less than 0 equal to 0?:Yes
+    Set values greater than 1 equal to 1?:Yes
+    Replace invalid values with 0?:Yes
+    Ignore the image masks?:No
+    Name the output image:CEpAndGoilgi_RescaleIntensity
+    Image or measurement?:Image
+    Select the first image:CEp_EnhanceRescale
+    Multiply the first image by:1
+    Measurement:
+    Image or measurement?:Image
+    Select the second image:Golgi_RescaleIntensity
+    Multiply the second image by:1
+    Measurement:
+
+IdentifySecondaryObjects:[module_num:21|svn_version:'Unknown'|variable_revision_number:10|show_window:False|notes:['Use previous created combination for cell detection']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input objects:Nuclei
     Name the objects to be identified:Cell
-    Select the method to identify the secondary objects:Propagation
-    Select the input image:CEp_RescaleIntensity
-    Number of pixels by which to expand the primary objects:10
+    Select the method to identify the secondary objects:Distance - B
+    Select the input image:CEpAndGoilgi_RescaleIntensity
+    Number of pixels by which to expand the primary objects:80
     Regularization factor:0.1
     Discard secondary objects touching the border of the image?:No
     Discard the associated primary objects?:No
@@ -289,13 +354,13 @@ IdentifySecondaryObjects:[module_num:19|svn_version:'Unknown'|variable_revision_
     Threshold setting version:12
     Threshold strategy:Global
     Thresholding method:Minimum Cross-Entropy
-    Threshold smoothing scale:5
-    Threshold correction factor:0.7
+    Threshold smoothing scale:2
+    Threshold correction factor:1
     Lower and upper bounds on threshold:0.0,1.0
     Manual threshold:0.0
     Select the measurement to threshold with:None
-    Two-class or three-class thresholding?:Two classes
-    Log transform before thresholding?:No
+    Two-class or three-class thresholding?:Three classes
+    Log transform before thresholding?:Yes
     Assign pixels in the middle intensity class to the foreground or the background?:Foreground
     Size of adaptive window:50
     Lower outlier fraction:0.05
@@ -303,20 +368,20 @@ IdentifySecondaryObjects:[module_num:19|svn_version:'Unknown'|variable_revision_
     Averaging method:Mean
     Variance method:Standard deviation
     # of deviations:2.0
-    Thresholding method:Minimum Cross-Entropy
+    Thresholding method:Otsu
 
-ConvertObjectsToImage:[module_num:20|svn_version:'Unknown'|variable_revision_number:1|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:True]
+ConvertObjectsToImage:[module_num:22|svn_version:'Unknown'|variable_revision_number:1|show_window:False|notes:['This step is to detect leading edge cells']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input objects:Cell
     Name the output image:CellImage
     Select the color format:Binary (black & white)
     Select the colormap:Default
 
-RemoveHoles:[module_num:21|svn_version:'Unknown'|variable_revision_number:1|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+RemoveHoles:[module_num:23|svn_version:'Unknown'|variable_revision_number:1|show_window:False|notes:['This step is to detect leading edge cells']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:CellImage
     Name the output image:CellImageRemoveHoles
     Size of holes to fill:560
 
-ImageMath:[module_num:22|svn_version:'Unknown'|variable_revision_number:5|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+ImageMath:[module_num:24|svn_version:'Unknown'|variable_revision_number:5|show_window:False|notes:['This step is to detect leading edge cells']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Operation:Invert
     Raise the power of the result by:1.0
     Multiply the result by:1.0
@@ -335,7 +400,7 @@ ImageMath:[module_num:22|svn_version:'Unknown'|variable_revision_number:5|show_w
     Multiply the second image by:1.0
     Measurement:
 
-ConvertImageToObjects:[module_num:23|svn_version:'Unknown'|variable_revision_number:1|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:True]
+ConvertImageToObjects:[module_num:25|svn_version:'Unknown'|variable_revision_number:1|show_window:False|notes:['This step is to detect leading edge cells']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:CellImageInvert
     Name the output object:CellImageInvertToObjects
     Convert to boolean image:Yes
@@ -343,7 +408,7 @@ ConvertImageToObjects:[module_num:23|svn_version:'Unknown'|variable_revision_num
     Background label:0
     Connectivity:0
 
-MeasureObjectNeighbors:[module_num:24|svn_version:'Unknown'|variable_revision_number:3|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+MeasureObjectNeighbors:[module_num:26|svn_version:'Unknown'|variable_revision_number:3|show_window:False|notes:['This step is to detect leading edge cells']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select objects to measure:Cell
     Select neighboring objects to measure:CellImageInvertToObjects
     Method to determine neighbors:Expand until adjacent
@@ -356,7 +421,7 @@ MeasureObjectNeighbors:[module_num:24|svn_version:'Unknown'|variable_revision_nu
     Name the output image:PercentTouching
     Select colormap:Oranges
 
-FilterObjects:[module_num:25|svn_version:'Unknown'|variable_revision_number:10|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+FilterObjects:[module_num:27|svn_version:'Unknown'|variable_revision_number:10|show_window:False|notes:['Classify cells in to crowded region Cell_IN or belonging to the leading edge Cell_OUT']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the objects to filter:Cell
     Name the output objects:Cell_IN
     Select the filtering mode:Measurements
@@ -370,14 +435,14 @@ FilterObjects:[module_num:25|svn_version:'Unknown'|variable_revision_number:10|s
     Assign overlapping child to:Both parents
     Keep removed objects as a separate set?:Yes
     Name the objects removed by the filter:Cell_OUT
-    Select the measurement to filter by:Neighbors_NumberOfNeighbors_CellImageInvertToObjects_Expanded
+    Select the measurement to filter by:Neighbors_PercentTouching_CellImageInvertToObjects_Expanded
     Filter using a minimum measurement value?:No
     Minimum value:0.0
     Filter using a maximum measurement value?:Yes
     Maximum value:0
     Allow fuzzy feature matching?:No
 
-RelateObjects:[module_num:26|svn_version:'Unknown'|variable_revision_number:5|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+RelateObjects:[module_num:28|svn_version:'Unknown'|variable_revision_number:5|show_window:False|notes:['Choose from detected cells in the crowded region those that contain nucleus']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Parent objects:Cell_IN
     Child objects:Nuclei
     Calculate child-parent distances?:None
@@ -387,7 +452,7 @@ RelateObjects:[module_num:26|svn_version:'Unknown'|variable_revision_number:5|sh
     Name the output object:Cell_IN_with_N
     Parent name:None
 
-RelateObjects:[module_num:27|svn_version:'Unknown'|variable_revision_number:5|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+RelateObjects:[module_num:29|svn_version:'Unknown'|variable_revision_number:5|show_window:False|notes:['Choose from detected cells in the leading edge region those that contain nucleus']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Parent objects:Cell_OUT
     Child objects:Nuclei
     Calculate child-parent distances?:None
@@ -397,7 +462,7 @@ RelateObjects:[module_num:27|svn_version:'Unknown'|variable_revision_number:5|sh
     Name the output object:Cell_OUT_with_N
     Parent name:None
 
-RelateObjects:[module_num:28|svn_version:'Unknown'|variable_revision_number:5|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+RelateObjects:[module_num:30|svn_version:'Unknown'|variable_revision_number:5|show_window:False|notes:['Assign centrosome to cells at the crowded region']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Parent objects:Cell_IN
     Child objects:TrueCentrosome
     Calculate child-parent distances?:None
@@ -407,7 +472,7 @@ RelateObjects:[module_num:28|svn_version:'Unknown'|variable_revision_number:5|sh
     Name the output object:Cell_IN_with_C
     Parent name:None
 
-RelateObjects:[module_num:29|svn_version:'Unknown'|variable_revision_number:5|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+RelateObjects:[module_num:31|svn_version:'Unknown'|variable_revision_number:5|show_window:False|notes:['Assign centrosome to cells at the leading edge region']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Parent objects:Cell_OUT
     Child objects:TrueCentrosome
     Calculate child-parent distances?:None
@@ -417,23 +482,46 @@ RelateObjects:[module_num:29|svn_version:'Unknown'|variable_revision_number:5|sh
     Name the output object:Cell_OUT_with_C
     Parent name:None
 
-OverlayOutlines:[module_num:30|svn_version:'Unknown'|variable_revision_number:4|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:True]
+GrayToColor:[module_num:32|svn_version:'Unknown'|variable_revision_number:4|show_window:False|notes:['Create image composite image,  for further export of the results']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+    Select a color scheme:RGB
+    Rescale intensity:Yes
+    Select the image to be colored red:CEp
+    Select the image to be colored green:Golgi
+    Select the image to be colored blue:DAPI
+    Name the output image:ColorImage
+    Relative weight for the red image:1.5
+    Relative weight for the green image:1
+    Relative weight for the blue image:1.0
+    Select the image to be colored cyan:Leave this black
+    Select the image to be colored magenta:Leave this black
+    Select the image to be colored yellow:Leave this black
+    Select the image that determines brightness:Leave this black
+    Relative weight for the cyan image:1.0
+    Relative weight for the magenta image:1.0
+    Relative weight for the yellow image:1.0
+    Relative weight for the brightness image:1.0
+    Hidden:1
+    Image name:None
+    Color:#ff0000
+    Weight:1.0
+
+OverlayOutlines:[module_num:33|svn_version:'Unknown'|variable_revision_number:4|show_window:False|notes:['Create image composite image,  for further export of the results']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Display outlines on a blank image?:No
-    Select image on which to display outlines:CEp_RescaleIntensity
+    Select image on which to display outlines:ColorImage
     Name the output image:CEp_detection
     Outline display mode:Color
     Select method to determine brightness of outlines:Max of image
     How to outline:Inner
-    Select outline color:Red
-    Select objects to display:TrueCentrosome
-    Select outline color:Green
+    Select outline color:green
     Select objects to display:Cell_IN
+    Select outline color:yellow
+    Select objects to display:Cell_OUT
     Select outline color:Blue
     Select objects to display:Nuclei
-    Select outline color:Yellow
-    Select objects to display:Cell_OUT
+    Select outline color:white
+    Select objects to display:TrueCentrosome
 
-SaveImages:[module_num:31|svn_version:'Unknown'|variable_revision_number:16|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:True]
+SaveImages:[module_num:34|svn_version:'Unknown'|variable_revision_number:16|show_window:False|notes:['Export of the results of the detection']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:True]
     Select the type of image to save:Image
     Select the image to save:CEp_detection
     Select method for constructing file names:From image filename
@@ -453,7 +541,7 @@ SaveImages:[module_num:31|svn_version:'Unknown'|variable_revision_number:16|show
     How to save the series:T (Time)
     Save with lossless compression?:Yes
 
-ExportToSpreadsheet:[module_num:32|svn_version:'Unknown'|variable_revision_number:13|show_window:False|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:True]
+ExportToSpreadsheet:[module_num:35|svn_version:'Unknown'|variable_revision_number:13|show_window:False|notes:['Export resutls in csv file']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:True]
     Select the column delimiter:Comma (",")
     Add image metadata columns to your object data file?:No
     Add image file and folder names to your object data file?:No
