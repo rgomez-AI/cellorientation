@@ -42,7 +42,7 @@ cyan = "\033[36m"
 end = "\033[0m"
 
 
-msg = f"""{green}{bold}Thanks for using 3DChromTrans and please remember to cite the tool!{end}{end}
+msg = f"""{green}{bold}Thanks for using CellOrientation and please remember to cite the tool!{end}{end}
     {cyan} Author: Raul Gomez-Riera.
            Title:
            journal: {end}
