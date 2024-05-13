@@ -1,12 +1,5 @@
 name: R
 channels:
-  - defaults
   - conda-forge
 dependencies:
-  - r-base=4.3.2=hb8ee39d_1
-  - r-tcltk2
-  - r-readr
-  - r-dplyr
-  - r-usedist
-  - r-tidyr
-  - r-writexl
+  - r-base=4.3.3

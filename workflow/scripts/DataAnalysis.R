@@ -1,12 +1,25 @@
-if (!require("tcltk")) install.packages('tcltk')
-if (!require("readr")) install.packages('readr')
-if (!require("dplyr")) install.packages('dplyr')
-if (!require("tidyr")) install.packages('tidyr')
-if (!require("circular")) install.packages('circular')
-if (!require("DT")) install.packages('DT')
-if (!require("scales")) install.packages('scales')
-if (!require("stats")) install.packages('stats')
-
+if (!require("tcltk")) install.packages('tcltk',                                           
+                                     dependencies = TRUE, 
+                                     repos = 'https://cran.r-project.org')
+if (!require("readr")) install.packages('readr',                                           
+                                     dependencies = TRUE, 
+                                     repos = 'https://cran.r-project.org')
+if (!require("dplyr")) install.packages('dplyr',                                           
+                                     dependencies = TRUE, 
+                                     repos = 'https://cran.r-project.org')
+if (!require("tidyr")) install.packages('tidyr',                                           
+                                     dependencies = TRUE, 
+                                     repos = 'https://cran.r-project.org')
+if (!require("circular")) install.packages('circular',
+                                           dependencies = TRUE, 
+                                           repos = 'https://cran.r-project.org')
+if (!require("DT")) install.packages('DT',                                           
+                                     dependencies = TRUE, 
+                                     repos = 'https://cran.r-project.org')
+if (!require("scales")) install.packages('scales',
+                                         dependencies = TRUE,
+                                         repos = 'https://cran.r-project.org')
+                                                                             
 library(tcltk)
 library(readr)
 library(dplyr)
