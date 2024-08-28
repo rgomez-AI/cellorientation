@@ -41,7 +41,7 @@ Afterwards you can activate the `conda` environment and download the repository.
 
 ```
 conda activate snakemake
-git clone https://gitlab.linux.crg.es/rgomez/cellorientation.git
+git clone https://github.com/rgomez-AI/CellOrientation.git
 ```
 
 ### - Enviroment creation
