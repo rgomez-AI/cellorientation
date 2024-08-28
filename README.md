@@ -46,7 +46,7 @@ git clone https://github.com/rgomez-AI/CellOrientation.git
 
 ### - Enviroment creation
 
-Create required environments by going to the directory `cellorientation/workflow` 
+Create required environments by going to the directory `CellOrientation/workflow` 
 
 where `Snakefile` is located and execute the following command:
 ```
