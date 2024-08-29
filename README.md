@@ -94,6 +94,12 @@ located at the inner region.
 * `results/OUTTERCells.pdf` which contain the analysis for cells
 located at the edge region.
 
+To inspect the quality of image segmentation and centrosome detection visit
+* `workflow/CP_OUT`
+
+<p align="center">
+  <img width=550 src="img/segImg.gif" alt="Workflow execution order">
+</p>
 
 ## Report generation
 
