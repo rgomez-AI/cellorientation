@@ -69,6 +69,7 @@ A list of the tools used in this pipeline:
 | Snakemake    | https://doi.org/10.12688/f1000research.29032.1    |
 | R            | https://wwwr-projectorg/                          |
 | Mamba        | https://github.com/mamba-org/mamba                |
+| Python       | https://www.python.org/                           |
 
 
 ## Input
