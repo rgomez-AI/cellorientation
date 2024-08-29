@@ -2,14 +2,15 @@
 # Snakemake workflow: `CellOrientation`
 
 [![Snakemake](https://img.shields.io/badge/snakemake-≥6.3.0-brightgreen.svg)](https://snakemake.github.io)
-[![GitHub actions status](https://github.com/<owner>/<repo>/workflows/Tests/badge.svg?branch=main)](https://github.com/<owner>/<repo>/actions?query=branch%3Amain+workflow%3ATests)
 
 
 ## For testing uniformity orientation of centrosome respect to the nucleus of cells (in angles) comming fron [Scratch Assay](https://cytosmart.com/resources/resources/wound-healing-assay-what-why-and-how)
 
-The usage of this workflow is described also in the [Snakemake Workflow Catalog](https://snakemake.github.io/snakemake-workflow-catalog/?usage=<owner>%2F<repo>).
+## Authors
 
-If you use this workflow in a paper, don't forget to give credits to the authors by citing the URL of this (original) `<repo>`sitory and its DOI (see above).
+* Raul Gomez Riera [ORCI](https://orcid.org/0000-0003-4197-180X)
+
+If you use this workflow in a paper, don't forget to give credits to the authors by citing the URL of this repo.
 
 
 ## Image acquisition settings for data generation
@@ -44,7 +45,7 @@ conda activate snakemake
 git clone https://github.com/rgomez-AI/CellOrientation.git
 ```
 
-### - Enviroment creation
+### Enviroment creation
 
 Create required environments by going to the directory `CellOrientation/workflow` 
 
@@ -58,6 +59,16 @@ snakemake --cores all --use-conda --conda-create-envs-only Data_Analysis
 <p align="center">
   <img width=150 src="img/dag.svg" alt="Workflow execution order">
 </p>
+
+A list of the tools used in this pipeline:
+
+| Tool         | Link                                              |
+|--------------|---------------------------------------------------|
+| Fiji         | https://doi.org/10.1038/nmeth.2019                |
+| CellProfiler | https://doi.org/10.1186/s12859-021-04344-9        |
+| Snakemake    | https://doi.org/10.12688/f1000research.29032.1    |
+| R            | https://wwwr-projectorg/                          |
+| Mamba        | https://github.com/mamba-org/mamba                |
 
 
 ## Input
@@ -94,10 +105,3 @@ Afterward you can create a report file with the name *report.html* as the exampl
 ```
 snakemake Data_Analysis --report report.html
 ```
-
-## TODO
-
-* Replace `<owner>` and `<repo>` everywhere in the template (also under .github/workflows) with the correct `<repo>` name and owning user or organization.
-* Replace `<name>` with the workflow name (can be the same as `<repo>`).
-* Replace `<description>` with a description of what the workflow does.
-* The workflow will occur in the snakemake-workflow-catalog once it has been made public. Then the link under "Usage" will point to the usage instructions if `<owner>` and `<repo>` were correctly set.
