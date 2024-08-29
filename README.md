@@ -76,7 +76,7 @@ A list of the tools used in this pipeline:
 
 Acquired images (multichannel, Z stack and series) storaged in .lif format
 
-Sample dataset provided by [Jennifer Jungfleisch](https://orcid.org/0000-0003-1063-9556) can be [download](https://public-docs.crg.es/almu/rgomez/Jennifer_Jungfleisch/Dataset.zip)
+Sample dataset provided by [Jennifer Jungfleisch](https://orcid.org/0000-0003-1063-9556) are images of human melanoma cells: [download](https://public-docs.crg.es/almu/rgomez/Jennifer_Jungfleisch/Dataset.zip)
 
 ## Running
 
