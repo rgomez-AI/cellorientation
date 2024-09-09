@@ -4,13 +4,13 @@
 [![Snakemake](https://img.shields.io/badge/snakemake-≥6.3.0-brightgreen.svg)](https://snakemake.github.io)
 
 
-## For testing uniformity orientation of centrosome respect to the nucleus of cells (in angles) comming fron [Scratch Assay](https://cytosmart.com/resources/resources/wound-healing-assay-what-why-and-how)
+## For testing uniformity orientation of centrosome respect to the nucleus of cells (in angles) coming from [Scratch Assay](https://www.nature.com/articles/nprot.2007.30) at the early time point
 
-## Authors
+## Author
 
 * [Raul Gomez Riera](https://orcid.org/0000-0003-4197-180X)
 
-If you use this workflow in a paper, don't forget to give credits to the authors by citing the URL of this repo.
+If you use this workflow in a paper, don't forget to give credits to the author by citing the URL of this repo.
 
 
 ## Image acquisition settings for data generation
