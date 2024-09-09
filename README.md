@@ -4,7 +4,7 @@
 [![Snakemake](https://img.shields.io/badge/snakemake-≥6.3.0-brightgreen.svg)](https://snakemake.github.io)
 
 
-## For testing uniformity orientation of centrosome respect to the nucleus of cells (in angles) coming from [Scratch Assay](https://www.nature.com/articles/nprot.2007.30) at the early time point
+## Test of Uniformity for centrosome orientation at early timepoints during [Wound Healing Assay](https://www.nature.com/articles/nprot.2007.30)
 
 ## Author
 
@@ -15,13 +15,10 @@ If you use this workflow in a paper, don't forget to give credits to the author 
 
 ## Image acquisition settings for data generation
 
-The scratch assay was carried out
-with the following fluorophores:
+The wound healing assay was combined with immunofluorescence of the centrosomal protein CEP170 and the Golgi marker GM130. Used fluorophores:
 * Channel 0 : Centrosome marker CEp170, Alexa647
 * Channel 1 : Golgi marker GM130, Alexa488
-
-For nuclei detection, cells were stained with 
-* Channel 2 : DAPI 
+* Channel 2 : Nucleus, DAPI 
 
 3D multiplex images (stack) of cells were acquired with Stellaris Falcon from Leica.
 * Objective Immersion="Oil" LensNA="1.3"
