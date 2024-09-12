@@ -89,14 +89,22 @@ As an output there are two files:
 * `results/INNERCells.pdf` which contain the analysis for cells
 located at the inner region.
 
+<p align="center">
+  <img width=550 src="img/Inner.gif" alt="Cell orientation at the Inner region">
+</p>
+
 * `results/OUTTERCells.pdf` which contain the analysis for cells
 located at the edge region.
+
+<p align="center">
+  <img width=550 src="img/Edge.gif" alt="Image Segmentation">
+</p>
 
 To inspect the quality of image segmentation and centrosome detection visit
 * `workflow/CP_OUT`
 
 <p align="center">
-  <img width=550 src="img/segImg.gif" alt="Workflow execution order">
+  <img width=550 src="img/segImg.gif" alt="Image Segmentation">
 </p>
 
 ## Report generation
