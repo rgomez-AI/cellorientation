@@ -97,7 +97,7 @@ located at the inner region.
 located at the edge region.
 
 <p align="center">
-  <img width=550 src="img/Edge.gif" alt="Image Segmentation">
+  <img width=550 src="img/Edge.gif" alt="Cell orientation at the leading edge">
 </p>
 
 To inspect the quality of image segmentation and centrosome detection visit
