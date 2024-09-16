@@ -59,14 +59,11 @@ snakemake --cores all --use-conda --conda-create-envs-only Data_Analysis
 
 A list of the tools used in this pipeline:
 
-| Tool         | Link                                              |
-|--------------|---------------------------------------------------|
-| Fiji         | https://doi.org/10.1038/nmeth.2019                |
-| CellProfiler | https://doi.org/10.1186/s12859-021-04344-9        |
-| Snakemake    | https://doi.org/10.12688/f1000research.29032.1    |
-| R            | https://wwwr-projectorg/                          |
-| Mamba        | https://github.com/mamba-org/mamba                |
-| Python       | https://www.python.org/                           |
+| Component       | Script                          | Description                                                               |
+|-----------------|---------------------------------|---------------------------------------------------------------------------|
+| split_channels  | lif2tif_split_proj_headless.ijm | Z project and convert lif file into independent TiFs                      |
+| CellProfiler    | Orientation.cppipe              | Detect centrosome per cell and provide its coordinate                     |
+| Data_Analysis   | DataAnalysis_headless.R         | Measure centrosome orientation and perform statistical test of uniformity |
 
 
 ## Input
