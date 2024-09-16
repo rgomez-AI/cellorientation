@@ -39,18 +39,24 @@ min_version("7.24.0")
 bold = "\033[1m"
 green = "\033[92m"
 cyan = "\033[36m"
+red =  "\033[31m"
 end = "\033[0m"
 
 
 msg = f"""{green}{bold}Thanks for using CellOrientation and please remember to cite the tool!{end}{end}
     {cyan} Author: Raul Gomez-Riera.
-           Title:
-           journal: {end}
-
+     GitHub: https://github.com/rgomez-AI/CellOrientation
+    {end}
 """
 
 sys.stderr.write(msg)
+OS = platform.system()
 
+
+if OS != "Linux":
+    msg = f"""{red}\n Warning: It run on linux platform only\n {end}"""
+    sys.stderr.write(msg)
+    sys.exit()
 
 report: "report/workflow.rst"
 
@@ -81,7 +87,7 @@ rule split_channels:
     params:
         split="1",	# Split Color (Boolean)
 	proj="ZSTD",	# Stack projection ("ZMAX", "ZAVG", "ZSTD" or "None")
-	flip="0",	# Flip Vertical (Boolean)
+	flip="0",	    # Flip Vertical (Boolean)
     output:
         directory("CP_DATASET"),
     conda:
