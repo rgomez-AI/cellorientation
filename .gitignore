@@ -5,4 +5,3 @@ logs/**
 .snakemake/**
 CP_DATASET/
 CP_OUT/
-SPLIT/

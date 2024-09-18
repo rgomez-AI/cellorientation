@@ -60,12 +60,11 @@ if OS != "Linux":
 
 report: "report/workflow.rst"
 
+dirpath = os.getcwd()
 
-OS = platform.system()
-
-currentDirectory = os.getcwd()
-
-dirpath = askdirectory(initialdir=currentDirectory, title="Select Images Directory")
+if sys.argv[4] != "--conda-create-envs-only":
+    currentDirectory = os.getcwd()
+    dirpath = askdirectory(initialdir=currentDirectory, title="Select Images Directory")
 
 sep = os.path.sep
 
