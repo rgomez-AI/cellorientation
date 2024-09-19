@@ -61,7 +61,7 @@ A list of the tools used in this pipeline:
 
 | Component       | Script                          | Description                                                               |
 |-----------------|---------------------------------|---------------------------------------------------------------------------|
-| split_channels  | lif2tif_split_proj_headless.ijm | Z project and convert lif file into independent TiFs                      |
+| split_channels  | lif2tif_split_proj_headless.ijm | Open .lif file, Z project (STD), split channels and convert into .TiF     |
 | CellProfiler    | Orientation.cppipe              | Detect centrosome per cell and provide its coordinate                     |
 | Data_Analysis   | DataAnalysis_headless.R         | Measure centrosome orientation and perform statistical test of uniformity |
 
