@@ -24,12 +24,12 @@ The wound healing assay was combined with immunofluorescence of the centrosomal 
 * Objective Immersion="Oil" LensNA="1.3"
 * Model="HC PL APO CS2 40x/1.30 OIL"
 * NominalMagnification="40"
-* Voxel Size: 0.2841x0.2841x0.3462
+* Voxel Size: 0.2841x0.2841x0.3462 um
 
 
 ## Installation
 
-You will need a current version of `snakemake` to run this workflow. To get `snakemake` please follow the install [instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) on their website, but in brief once `conda` and `mamba` are installed you can install `snakemake` with:
+You will need a current version of `snakemake` on Linux OS to run this workflow. To get `snakemake` please follow the install [instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) on their website, but in brief once `conda` and `mamba` are installed you can install `snakemake` with:
 
 ```
 mamba create -n snakemake -c conda-forge -c bioconda snakemake
