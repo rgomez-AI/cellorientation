@@ -59,11 +59,11 @@ snakemake --cores all --use-conda --conda-create-envs-only Data_Analysis
 
 A list of the tools used in this pipeline:
 
-| Component       | Script                          | Description                                                               |
-|-----------------|---------------------------------|---------------------------------------------------------------------------|
-| split_channels  | lif2tif_split_proj_headless.ijm | Open .lif file, Z project (STD), split channels and convert into .TiF     |
+| Component       | Script                          | Description                                             |
+|-----------------|---------------------------------|---------------------------------------------------------|
+| split_channels  | lif2tif_split_proj_headless.ijm | Open .lif file serie <br> Z project (Standart Deviation) <br> Split channels and convert then into .TiF     
 | CellProfiler    | Orientation.cppipe              | Detect centrosome per cell and provide its coordinate                     |
-| Data_Analysis   | DataAnalysis_headless.R         | Measure centrosome orientation and perform statistical test of uniformity |
+| Data_Analysis   | DataAnalysis_headless.R         | Measure centrosome orientation <br> Perform statistical test of uniformity |
 
 
 ## Input
