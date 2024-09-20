@@ -26,6 +26,7 @@ The wound healing assay was combined with immunofluorescence of the centrosomal 
 * NominalMagnification="40"
 * Voxel Size: 0.2841x0.2841x0.3462 um
 
+Note: Images series were acquired along one leading edge of the wound. The leading edge has to be centered in the image field of view and oriented top to bottom regarding cell migration.
 
 ## Installation
 
