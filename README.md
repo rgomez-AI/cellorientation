@@ -58,7 +58,7 @@ snakemake --cores all --use-conda --conda-create-envs-only Data_Analysis
   <img width=150 src="img/dag.svg" alt="Workflow execution order">
 </p>
 
-A list of components used in this workflow:
+A list of components used in this workflow `workflow/scripts`:
 
 | Component       | Script                          | Description                                             |
 |-----------------|---------------------------------|---------------------------------------------------------|
