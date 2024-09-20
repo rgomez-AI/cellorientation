@@ -57,12 +57,12 @@ snakemake --cores all --use-conda --conda-create-envs-only Data_Analysis
   <img width=150 src="img/dag.svg" alt="Workflow execution order">
 </p>
 
-A list of the tools used in this pipeline:
+A list of components used in this workflow:
 
 | Component       | Script                          | Description                                             |
 |-----------------|---------------------------------|---------------------------------------------------------|
 | split_channels  | lif2tif_split_proj_headless.ijm | Open .lif file serie <br> Z project (Standart Deviation) <br> Split channels and convert then into .TiF     
-| CellProfiler    | Orientation.cppipe              | Detect centrosome per cell and provide its coordinate                     |
+| CellProfiler    | Orientation.cppipe              | Detect centrosome and nucleus <br> Provide X, Y coordinates  <br> Classify cells base on its location                     |
 | Data_Analysis   | DataAnalysis_headless.R         | Measure centrosome orientation <br> Perform statistical test of uniformity |
 
 
