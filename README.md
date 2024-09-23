@@ -71,7 +71,7 @@ A list of components used in this workflow `workflow/scripts`:
 
 Acquired images (multichannel, Z stack and series) storaged in .lif format
 
-Sample dataset provided by [Jennifer Jungfleisch](https://orcid.org/0000-0003-1063-9556) are images of human melanoma cells: [download](https://public-docs.crg.es/almu/rgomez/Jennifer_Jungfleisch/Dataset.zip)
+Sample dataset provided by [Jennifer Jungfleisch](https://orcid.org/0000-0003-1063-9556) from [Fatima Gebauer's](https://orcid.org/0000-0001-7563-0013) Labs are images of human melanoma cells: [download](https://public-docs.crg.es/almu/rgomez/Jennifer_Jungfleisch/Dataset.zip)
 
 ## Running
 
