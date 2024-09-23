@@ -63,7 +63,7 @@ A list of components used in this workflow `workflow/scripts`:
 | Component       | Script                          | Description                                             |
 |-----------------|---------------------------------|---------------------------------------------------------|
 | split_channels  | lif2tif_split_proj_headless.ijm | Open .lif file serie <br> Z project (Standart Deviation) <br> Split channels and convert then into .TiF     
-| CellProfiler    | Orientation.cppipe              | Detect centrosome and nucleus <br> Provide X, Y coordinates  <br> Classify cells base on its location                     |
+| CellProfiler    | Orientation.cppipe              | Detect centrosome and nucleus <br> Provide X, Y coordinates  <br> Classify cells based on its location                     |
 | Data_Analysis   | DataAnalysis_headless.R         | Measure centrosome orientation <br> Perform statistical test of uniformity |
 
 
