@@ -126,7 +126,7 @@ function processFile(input, output, file, Split, Zpro, Flip) {
 		if (channels > 1 && Split) {
 			run("Split Channels");
 			for (j = 1; j <= channels; j++) {
-				selectWindow("C" + j + "-" + ID + "_" + filename);
+				selectWindow("C" + j + "-" + ID + filename);
 				// Save Results 
 				saveAs("TIFF", output + File.separator + filename + "_c" + j + ".tif");
 			}
