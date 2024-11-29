@@ -72,13 +72,13 @@ function processFolder(input, output) {
 		if(File.isDirectory(input + File.separator + list[i]))
 			processFolder(input + File.separator + list[i], output);
 		if(endsWith(list[i], ".lif"))
-			processFile(input, output, list[i], Split, Zpro);
+			processFile(input, output, list[i], Split, Zpro, Flip);
 	}
 }
 
 
 
-function processFile(input, output, file, Split, Zpro) {
+function processFile(input, output, file, Split, Zpro, Flip) {
 	path = input+ File.separator + file;
 	print(path);
 	Ext.setId(path); 
@@ -101,24 +101,24 @@ function processFile(input, output, file, Split, Zpro) {
 		if (slices > 1 && Zpro !="None") {
 			if (Zpro =="ZMAX"){
 				run("Z Project...", "projection=[Max Intensity]");
-				ID="MAX";
+				ID="MAX_";
 				selectWindow(filename);
 				close();
 			}
 			if (Zpro =="ZAVG"){
 				run("Z Project...", "projection=[Average Intensity]");
-				ID="AVG";
+				ID="AVG_";
 				selectWindow(filename);
 				close();
 			}
 			if (Zpro =="ZSTD"){
 				run("Z Project...", "projection=[Standard Deviation]");
-				ID="STD";
+				ID="STD_";
 				selectWindow(filename);
 				close();
 			}
 		}else {
-			Zpro="";
+			ID="";
 		}
 		if (Flip) {
 		run("Flip Vertically", "stack");
