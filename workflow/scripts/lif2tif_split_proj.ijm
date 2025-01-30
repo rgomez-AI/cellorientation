@@ -1,5 +1,5 @@
 //*************************************************************************
-// lif2tif - Open a "lif" files and convert to tif.
+// lif2tif_split_proj - Open a "lif" files and convert to tif.
 // Copyright (C) 2018  Raul Gomez Riera, All Rights Reserved
 //
 // Redistribution and use in source and binary forms, with or without
@@ -52,6 +52,7 @@ if (File.exists(path + File.separator + "Results") != 1) {
 	File.makeDirectory(rootPath + File.separator + "Results");
 }
 
+ID = "";
 for (s=1; s<=seriesCount; s++) {
 	// Bio-Formats Importer uses an argument that can be built by concatenate a set of strings
 	run("Bio-Formats Importer", "open=&path autoscale color_mode=Default view=Hyperstack stack_order=XYCZT series_"+s);
@@ -97,7 +98,11 @@ for (s=1; s<=seriesCount; s++) {
 	if (channels > 1 && Split) {
 		run("Split Channels");
 		for (j = 1; j <= channels; j++) {
-			selectWindow("C" + j + "-" + ID + "_" + filename);
+			if (ID !=""){
+				selectWindow("C" + j + "-" + ID + "_" + filename);
+			}else {
+				selectWindow("C" + j + "-" + filename);
+			}
 			// Save Results 
 			saveAs("TIFF", rootPath + File.separator + "Results" + File.separator + filename + "_c" + j + ".tif");
 		}
